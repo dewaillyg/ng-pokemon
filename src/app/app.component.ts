@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { POKEMONS } from './mock-pokemon-list';
+import { Pokemon } from './pokemon';
 
 @Component({
   selector: 'app-root',
   template: `
-    <h1>Welcome to {{ pokemonList[1] }}!</h1>
+    <h1>Liste de Pokémon</h1>
 
     <router-outlet />
   `,
@@ -12,14 +14,14 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AppComponent implements OnInit {
-  pokemonList: string[] = ['Bulbizarre', 'Salamèche', 'Carapuce'];
+  pokemonList: Pokemon[] = POKEMONS;
 
   ngOnInit(): void {
-    console.table(this.pokemonList);
+    console.table(this.pokemonList[0]);
     this.selectPokemon(this.pokemonList[0]);
   }
 
-  selectPokemon(pokemonName: string) {
-    console.log(`Vous avez clické sur le Pokemon ${pokemonName}`);
+  selectPokemon(pokemon: Pokemon) {
+    console.log(`Vous avez clické sur le Pokemon ${pokemon.name}`);
   }
 }
